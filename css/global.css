@@ -1,0 +1,13 @@
+:root {
+  --highlight-1: #B80054;
+  --highlight-2: #D76F9F;
+  --highlight-3: #500027;
+  --background-1: #FFFFFF;
+  --background-2: #EEEEEE;
+  --text-1: #000000;
+  --text-2: #767676;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

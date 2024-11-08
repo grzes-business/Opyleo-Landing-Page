@@ -588,13 +588,8 @@ video {
   justify-content: space-evenly;
 }
 
-.bg-primary-color {
-  background-color: var(--primary-color);
-}
-
-.bg-red-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+.bg-highlight-1 {
+  background-color: var(--highlight-1);
 }
 
 .p-6 {
