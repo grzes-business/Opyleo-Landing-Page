@@ -1,0 +1,58 @@
+---
+
+
+interface Props {
+    title: string;
+    price: string;
+    state: string;
+    seller: string;
+}
+
+const { title = "Tytuł", price = "Cena", state = "Stan", seller = "Imię Nazwisko" } = Astro.props;
+
+---
+
+<div class="w-[280px] bg-white rounded-lg shadow-md">
+    <!-- Image Container -->
+    <div class="relative">
+        <!-- Main Image Area -->
+        <div class="h-[320px] bg-gradient-to-r from-blue-600 via-blue-500 to-orange-400 rounded-t-lg">
+            <!-- Book Content -->
+            <div class="p-5 text-white">
+                <h3 class="text-sm font-normal mb-4"></h3>
+                <h2 class="text-xl font-medium leading-tight">Tytuł</h2>
+                <!-- Number 2 Box -->
+                <div class="absolute bottom-4 left-5"></div>
+            </div>
+        </div>
+        <!-- Camera Icon Button -->
+        <div class="absolute top-2 right-2 bg-black/50 rounded-full p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="p-4">
+        <h2 class="text-xl font-semibold mb-1">{title}</h2>
+        <p class="text-gray-600 mb-2">{state}</p>
+        <p class="text-xl font-bold mb-3">{price}</p>
+        
+        <!-- Bottom Row -->
+        <div class="flex items-center justify-between">
+            <!-- User Info -->
+            <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span class="text-gray-600 text-sm">{seller}</span>
+            </div>
+            <!-- Heart Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 hover:text-gray-600 cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+        </div>
+    </div>
+</div>
