@@ -1,8 +1,76 @@
-<p class="text-lg font-bold text-red-500 p-4 flex justify-center">SwiperJS</p>
+---
+// src/pages/index.astro
+import 'swiper/css';
+import 'swiper/css/autoplay';
+---
 
-<h1>hej</h1>
-<h2>hej</h2>
-<h3>hej</h3>
-<h4>hej</h4>
-<h5>hej</h5>
-<h6>hej</h6>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Astro Swiper Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <main class="w-screen h-screen flex items-center">
+      <div class="swiper h-3/4 overflow-visible">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide !flex items-center">
+            <div class="w-full aspect-[2/3] max-w-[calc(100vh*0.75*0.667)] max-h-full rounded-2xl bg-white flex items-center justify-center text-2xl font-semibold">
+              Slide 1
+            </div>
+          </div>
+          <div class="swiper-slide !flex items-center">
+            <div class="w-full aspect-[2/3] max-w-[calc(100vh*0.75*0.667)] max-h-full rounded-2xl bg-white flex items-center justify-center text-2xl font-semibold">
+              Slide 2
+            </div>
+          </div>
+          <div class="swiper-slide !flex items-center">
+            <div class="w-full aspect-[2/3] max-w-[calc(100vh*0.75*0.667)] max-h-full rounded-2xl bg-white flex items-center justify-center text-2xl font-semibold">
+              Slide 3
+            </div>
+          </div>
+          <div class="swiper-slide !flex items-center">
+            <div class="w-full aspect-[2/3] max-w-[calc(100vh*0.75*0.667)] max-h-full rounded-2xl bg-white flex items-center justify-center text-2xl font-semibold">
+              Slide 4
+            </div>
+          </div>
+          <div class="swiper-slide !flex items-center">
+            <div class="w-full aspect-[2/3] max-w-[calc(100vh*0.75*0.667)] max-h-full rounded-2xl bg-white flex items-center justify-center text-2xl font-semibold">
+              Slide 5
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <style>
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      .swiper-slide {
+        display: unset;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    </style>
+
+    <script>
+      import { Swiper, Autoplay } from 'swiper';  // Import the Autoplay module
+
+      const swiper = new Swiper('.swiper', {
+        modules: [Autoplay], 
+        slidesPerView: 1.5,
+        loop: true,
+        centeredSlides: true,
+        spaceBetween: 30,
+        allowTouchMove: false,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false
+        }
+      });
+    </script>
+  </body>
+</html>
