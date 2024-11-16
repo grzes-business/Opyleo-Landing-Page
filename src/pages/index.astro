@@ -10,11 +10,25 @@ import CardTemplate from '../components/cardTemplate.astro'
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="../css/fonts.css" rel="stylesheet">
     <title>Opyleo</title>
+<style>
+  * {
+    //border: 2px solid red; 
+  }
+</style>
 </head>
 <body>
-    <header class="h-1/6 bg-highlight-1 flex justify-center items-center text-white font-black text-3xl p-6">
-        <h1>Opyleo</h1>
+    <header class="h-[10vh] p-[10vh] bg-highlight-1 flex flex-row justify-center items-center text-white font-poppins font-bold text-2xl p-6">
+      <h1>opyleo</h1>
+      <div class="flex-grow"></div>
+      <button class="bg-singular-elements text-sm text-white py-2 px-4 rounded-lg inline-flex items-center">
+      <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+      <span>Pobierz</span>
+        </button>
     </header>
     <section class="h-screen flex justify-center items-center font-bold">
         <CardTemplate title="Matematyka" seller="Pan Kowalski" price="30zł" state="Dobry"/>
