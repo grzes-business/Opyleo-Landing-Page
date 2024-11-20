@@ -1,12 +1,25 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets'
 interface Props {
-    title: string;
-    price: string;
-    state: string;
-    seller: string;
+    title?: string;
+    price?: string;
+    state?: string;
+    seller?: string;
+    imagePath?: string;
 }
 
-const { title = "Tytuł", price = "Cena", state = "Stan", seller = "Imię Nazwisko" } = Astro.props;
+const { 
+    title = "Tytuł", 
+    price = "Cena", 
+    state = "Stan", 
+    seller = "Imię Nazwisko", 
+    imagePath = "/src/assets/placeholder.jpg"
+} = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}', { eager: true });
+
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
 
 <div class="w-[280px] bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
@@ -16,9 +29,12 @@ const { title = "Tytuł", price = "Cena", state = "Stan", seller = "Imię Nazwis
         <div class="h-[360px] rounded-t-xl overflow-hidden">
             <!-- Book cover/content area -->
             <div class="w-full h-full relative">
-                <div class="absolute bottom-0 left-0 p-4 text-white">
-                    <h2 class="text-lg font-medium leading-tight">{title}</h2>
-                </div>
+                <Image 
+                    src={images[imagePath].default}
+                    alt={title}
+                    class="w-full h-full object-cover"
+                    draggable="false"
+                />
             </div>
         </div>
         <!-- Camera Icon Button - adjusted positioning and styling -->
