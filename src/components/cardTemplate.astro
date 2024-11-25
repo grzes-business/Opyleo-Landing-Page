@@ -1,12 +1,14 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets'
+
 interface Props {
     title?: string;
     price?: string;
     state?: string;
     seller?: string;
     imagePath?: string;
+    imageUrl?: string;
 }
 
 const { 
@@ -14,12 +16,17 @@ const {
     price = "Cena", 
     state = "Stan", 
     seller = "Imię Nazwisko", 
-    imagePath = "/src/assets/placeholder.jpg"
+    imagePath = "/src/assets/placeholder.jpg",
+    imageUrl
 } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}', { eager: true });
 
-if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+// Only check for local image if no URL is provided
+const useLocalImage = !imageUrl;
+if (useLocalImage && !images[imagePath]) {
+    throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+}
 ---
 
 <div class="w-[280px] bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
@@ -29,15 +36,24 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
         <div class="h-[360px] rounded-t-xl overflow-hidden">
             <!-- Book cover/content area -->
             <div class="w-full h-full relative">
-                <Image 
-                    src={images[imagePath].default}
-                    alt={title}
-                    class="w-full h-full object-cover"
-                    draggable="false"
-                />
+                {useLocalImage ? (
+                    <Image 
+                        src={images[imagePath].default}
+                        alt={title}
+                        class="w-full h-full object-cover"
+                        draggable="false"
+                    />
+                ) : (
+                    <img 
+                        src={imageUrl}
+                        alt={title}
+                        class="w-full h-full object-cover"
+                        draggable="false"
+                    />
+                )}
             </div>
         </div>
-        <!-- Camera Icon Button - adjusted positioning and styling -->
+        <!-- Camera Icon Button -->
         <button class="absolute top-3 right-3 bg-black/40 hover:bg-black/60 rounded-full p-2.5 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -46,7 +62,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
         </button>
     </div>
 
-    <!-- Product Details - adjusted padding and spacing -->
+    <!-- Product Details -->
     <div class="p-4">
         <h2 class="text-xl font-medium mb-1">{title}</h2>
         <p class="text-gray-600 text-sm mb-2">{state}</p>
