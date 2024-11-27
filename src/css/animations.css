@@ -1,0 +1,90 @@
+.scroll-animate {
+  position: relative;
+  z-index: 0;
+  overflow: hidden; /* Ensures scrolling animation works */
+  display: flex;
+  flex-direction: column;
+  height: 1.5em; /* Matches the line height of spans */
+}
+
+.header-of-hero {
+  font-size: 20pt; /* Approximately 21px */
+}
+
+.footer-of-hero {
+  font-size: 15pt; /* Approximately 21px */
+}
+
+@keyframes auto-scroll {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(0%);
+  }
+  30% {
+    transform: translateY(-100%); /* Moves one text line up */
+  }
+  55% {
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(-200%); /* Moves to the next line */
+  }
+  85% {
+    transform: translateY(-200%);
+  }
+  90% {
+    transform: translateY(0%); /* Moves to the next line */
+  }
+  100% {
+    transform: translateY(0%); /* Stays at the last line */
+  }
+}
+
+@keyframes transform-sell-books-text {
+  0% {
+    transform: translateX(20%);
+  }
+  25% {
+    transform: translateX(20%);
+  }
+  30% {
+    transform: translateX(11%); /* Moves one text line up */
+  }
+  55% {
+    transform: translateX(11%);
+  }
+  60% {
+    transform: translateX(-4%); /* Moves to the next line */
+  }
+  85% {
+    transform: translateX(-4%);
+  }
+  90% {
+    transform: translateX(20%); /* Moves to the next line */
+  }
+  100% {
+    transform: translateX(20%); /* Stays at the last line */
+  }
+}
+
+.sell-books-text {
+  background: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: transform-sell-books-text 10s infinite ease-in-out; /* Smooth animation */
+  line-height: 1.5; /* Matches container height for smooth scrolling */
+  display: block; /* Ensures proper stacking for spans */
+}
+
+.scroll-animate span {
+  background: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: auto-scroll 10s infinite ease-in-out; /* Smooth animation */
+  line-height: 1.5; /* Matches container height for smooth scrolling */
+  display: block; /* Ensures proper stacking for spans */
+}
