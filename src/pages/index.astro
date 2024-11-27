@@ -2,6 +2,7 @@
 import '../css/global.css';
 import '../css/tailwind.css';
 import '../css/style.css';
+import '../css/animations.css';
 import CardTemplate from '../components/cardTemplate.astro'
 import SwiperDemo from '../components/swiperDemoComponent.astro'
 ---
@@ -14,11 +15,10 @@ import SwiperDemo from '../components/swiperDemoComponent.astro'
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="../css/fonts.css" rel="stylesheet">
     <title>Opyleo</title>
 <style>
   * {
-    //border: 2px solid red; 
+    //border: 2px solid red;
   }
 </style>
 </head>
@@ -26,13 +26,40 @@ import SwiperDemo from '../components/swiperDemoComponent.astro'
     <header class="h-[10vh] p-[10vh] bg-highlight-1 flex flex-row justify-center items-center text-white font-poppins font-bold text-2xl p-6">
       <h1>opyleo</h1>
       <div class="flex-grow"></div>
-      <button class="bg-singular-elements text-sm text-white py-2 px-4 rounded-lg inline-flex items-center">
+      <button class="bg-highlight-3 text-sm text-white py-2 px-4 rounded-lg inline-flex items-center">
       <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
       <span>Pobierz</span>
         </button>
     </header>
-    <section class="h-screen flex justify-center items-center font-bold">
+<!-- <section class="h-screen flex justify-center items-center font-bold">
+    <SwiperDemo /> -->
+    <section 
+      style="background: linear-gradient(110deg, #D76F9F 0%, #FFFFFF 100%);"
+      class="h-[90vh] flex flex-col justify-center items-center gap-[10%]">
+         <div class="items-center scroll-animate header-of-hero">
+            <span><b class="font-black">5 tysięcy</b> użytkowników</span>
+            <span>Ponad <b class="font-black">10 tysięcy</b> pobrań</span>
+            <span>Lorem ipsum dolor</span>
+            <!--Trzeba wymyśleć więcej tekstów!!!-->
+        </div>
+        <!-- <div class="shadow-book">
+            <CardTemplate title="Matematyka" seller="Pan Kowalski" price="30zł" state="Dobry"/>
+        </div> -->
         <SwiperDemo />
+        <div style="transform: translateX(5%)" class="flex align-center footer-of-hero">
+            <div class="sell-books-text align-bottom">Sprzedawaj <b class="font-black">książki</b></div>
+            <div class="text-right pr-1.5 scroll-animate">
+                <span>tanio</span>
+                <span>szybko</span>
+                <span>wygodnie</span>
+            </div>
+            <button type="button" class="ml-5 text-white bg-highlight-1 hover:bg-highlight-2 focus:ring-4 focus:outline-none focus:ring-highlight-1-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 rotate-90">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+                <span class="sr-only">Icon description</span>
+            </button>
+        </div>
     </section>
     <section class="h-screen flex justify-center items-center font-bold">
         <h1>Sekcja Lokalnie Sprzedanych</h1>
@@ -51,6 +78,7 @@ import SwiperDemo from '../components/swiperDemoComponent.astro'
         <p>Opyleo</p>
         <a>Regulamin</a>
     </footer>
-    <script src="../js/script.js"></script>
+<script src="../js/script.js"></script>
+  <!--<script src="../js/header-of-hero.js"></script> -->
 </body>
 </html>
