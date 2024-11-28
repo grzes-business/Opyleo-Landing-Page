@@ -34,11 +34,17 @@ if (useLocalImage && !images[imagePath]) {
   .aspect-responsive {
     aspect-ratio: 2/3 !important;
   }
+  .image-height-responsive {
+    height: calc(100% - 80px) !important;
+  }
+  .width-responsive {
+    max-width: 280px;
+  }
 }
 </style>
 <div class="w-full max-w-[280px] bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow aspect-[1/2] h-auto aspect-responsive">
     <!-- Image Container -->
-    <div class="relative w-full h-[calc(100%-164px)]">
+    <div class="relative w-full h-[calc(100%-164px)] image-height-responsive">
         <!-- Main Image Area -->
         <div class="w-full h-full rounded-t-xl overflow-hidden">
             <!-- Book cover/content area -->
@@ -70,7 +76,7 @@ if (useLocalImage && !images[imagePath]) {
     </div>
 
     <!-- Product Details -->
-    <div class="p-4">
+    <div class="p-4 min-h-[200px]">
         <h2 class="text-xl font-medium mb-1">{title}</h2>
         <p class="text-gray-600 text-sm mb-2">{state}</p>
         <p class="text-xl font-bold mb-3">{price}</p>
