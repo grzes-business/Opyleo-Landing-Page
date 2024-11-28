@@ -29,11 +29,18 @@ if (useLocalImage && !images[imagePath]) {
 }
 ---
 
-<div class="w-[280px] bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<style>
+@media (max-height: 720px) {
+  .aspect-responsive {
+    aspect-ratio: 2/3 !important;
+  }
+}
+</style>
+<div class="w-full max-w-[280px] bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow aspect-[1/2] h-auto aspect-responsive">
     <!-- Image Container -->
-    <div class="relative">
+    <div class="relative w-full h-[calc(100%-164px)]">
         <!-- Main Image Area -->
-        <div class="h-[360px] rounded-t-xl overflow-hidden">
+        <div class="w-full h-full rounded-t-xl overflow-hidden">
             <!-- Book cover/content area -->
             <div class="w-full h-full relative">
                 {useLocalImage ? (
