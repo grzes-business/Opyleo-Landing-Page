@@ -1,5 +1,6 @@
 const txts=document.querySelector(".animate-text").children,
     txtsLen=txts.length;
+console.log("txtsLen: ", txtsLen);
 let index=0;
 const textInTimer=3000,
     textOutTimer=2800;

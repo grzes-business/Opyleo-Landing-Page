@@ -26,34 +26,40 @@ import SwiperDemo from '../components/swiperDemoComponent.astro'
     <header class="h-[10vh] bg-highlight-1 flex flex-row justify-center items-center text-white font-poppins font-bold text-2xl p-6">
       <h1>opyleo</h1>
       <div class="flex-grow"></div>
-      <button class="bg-highlight-3 text-sm text-white py-2 px-4 rounded-lg inline-flex items-center">
+      <button class="bg-highlight-3 text-sm text-white py-2 px-4 rounded-lg inline-flex items-center justify-around">
       <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
       <span>Pobierz</span>
         </button>
     </header>
     <section 
       style="background: linear-gradient(110deg, #D76F9F 0%, #FFFFFF 100%);"
-      class="h-[90vh] flex flex-col justify-evenly items-center">
-         <div class="items-center scroll-animate header-of-hero">
+      class="h-[90vh] flex flex-col justify-between">
+        
+        <!-- <div class="flex flex-grow items-center justify-center scroll-animate header-of-hero">
+            <span>Witaj w <b class="font-black">Opyleo</b></span>
             <span><b class="font-black">5 tysięcy</b> użytkowników</span>
             <span>Ponad <b class="font-black">10 tysięcy</b> pobrań</span>
-            <span>Lorem ipsum dolor</span>
-            <!--Trzeba wymyśleć więcej tekstów!!!-->
+        </div> -->
+        <div class="flex flex-grow items-center justify-center header-of-hero">
+            <span>Witaj w <b class="font-black">Opyleo</b></span>
         </div>
+        
         <SwiperDemo />
-        <div style="transform: translateX(5%)" class="flex align-center footer-of-hero">
-            <div class="sell-books-text align-bottom">Sprzedawaj <b class="font-black">książki</b></div>
-            <div class="text-right pr-1.5 scroll-animate">
-                <span>tanio</span>
-                <span>szybko</span>
-                <span>wygodnie</span>
+        <div class="flex flex-grow justify-end items-end">
+            <div class="flex justify-end items-center footer-of-hero mb-5">
+                <div class="sell-books-text">Sprzedawaj <b class="font-black">książki</b></div>
+                <div class="text-right pr-1.5 scroll-animate">
+                    <span>tanio</span>
+                    <span>szybko</span>
+                    <span>wygodnie</span>
+                </div>
+                <button type="button" class="ml-5 text-white bg-highlight-1 hover:bg-highlight-2 focus:ring-4 focus:outline-none focus:ring-highlight-1-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 rotate-90">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                    <span class="sr-only">Icon description</span>
+                </button>
             </div>
-            <button type="button" class="ml-5 text-white bg-highlight-1 hover:bg-highlight-2 focus:ring-4 focus:outline-none focus:ring-highlight-1-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 rotate-90">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-                <span class="sr-only">Icon description</span>
-            </button>
         </div>
     </section>
     <section class="h-screen flex justify-center items-center font-bold">
@@ -74,6 +80,6 @@ import SwiperDemo from '../components/swiperDemoComponent.astro'
         <a>Regulamin</a>
     </footer>
 <script src="../js/script.js"></script>
-  <!--<script src="../js/header-of-hero.js"></script> -->
+<!-- <script src="../js/header-of-hero.js"></script> -->
 </body>
 </html>

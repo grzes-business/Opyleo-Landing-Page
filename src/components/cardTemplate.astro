@@ -55,19 +55,37 @@ const shortTitle = truncateTitle(title, maxWords, maxCharacters);
 ---
 
 <style>
+
 @media (max-height: 720px) {
   .aspect-responsive {
-    aspect-ratio: 2/3 !important;
+    aspect-ratio: 1; /* Avoid unnecessary !important */
   }
   .image-height-responsive {
-    height: calc(100% - 80px) !important;
+    height: calc(100% - 80px); /* Avoid unnecessary !important */
   }
   .width-responsive {
     max-width: 280px;
   }
+  .hidden-responsive {
+    display: none;
+  }
+  .description-responsive {
+    max-height: 200px;
+    min-height: 150px;
+  }
+  .text-responsive {
+    @apply text-base;
+  }
 }
+
+@media (min-height: 721px) and (max-height: 900px) {
+  .aspect-responsive {
+    aspect-ratio: 2 / 3;
+  }
+}
+
 </style>
-<div class="w-full max-w-[280px] bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow aspect-[1/2] h-auto aspect-responsive">
+<div class="w-full max-w-[280px] bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow h-auto aspect-[1/2] aspect-responsive">
     <!-- Image Container -->
     <div class="relative w-full h-[calc(100%-164px)] image-height-responsive">
         <!-- Main Image Area -->
@@ -101,11 +119,11 @@ const shortTitle = truncateTitle(title, maxWords, maxCharacters);
     </div>
 
     <!-- Product Details -->
-    <div class="p-4 min-h-[200px] flex justify-between flex-col">
+    <div class="p-4 min-h-[200px] description-responsive flex justify-between flex-col">
         <!-- Top info -->
         <div>
-            <h2 class="text-xl font-medium mb-1">{shortTitle}</h2>
-            <p class="text-gray-600 text-sm mb-2">{state}</p>
+            <h2 class="text-xl text-responsive font-medium mb-1">{shortTitle}</h2>
+            <p class="text-gray-600 text-sm mb-2 hidden-responsive">{state}</p>
             <p class="text-xl font-bold mb-3">{price}</p>
         </div>
         <!-- Bottom Row -->
