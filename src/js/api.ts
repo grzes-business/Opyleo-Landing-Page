@@ -16,12 +16,19 @@ export async function getBooks(): Promise<Book[]> {
         if(!api_url){
             throw new Error("Environment variable API_URL is missing");
         }
-        const response = await fetch(api_url);
-        if(!response.ok){
-            throw new Error(`Error: ${response.statusText}`);
-        }
-        const data = await response.json();
-        return_data = data.results as Book[];
+        for (let i = 1; i <= 3; i++) {
+            let page = "";
+            if(i > 1){
+                page = "?page=" + i.toString();
+            }
+            let response = await fetch(api_url + page);
+            if(!response.ok){
+                throw new Error(`Error: ${response.statusText}`);
+            }
+            let data = await response.json();
+            return_data = return_data.concat(data.results as Book[]);
+        }          
+        
     } catch (error){
         console.error('Error:', error);
     }
