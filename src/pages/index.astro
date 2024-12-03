@@ -5,6 +5,7 @@ import '../css/style.css';
 import '../css/animations.css';
 import CardTemplate from '../components/cardTemplate.astro'
 import SwiperDemo from '../components/swiperDemoComponent.astro'
+import MobileAppPopup from '../components/popup.astro';
 ---
 
 <html lang="pl">
@@ -71,8 +72,10 @@ import SwiperDemo from '../components/swiperDemoComponent.astro'
     <section class="h-screen flex justify-center items-center font-bold">
         <h1>Sekcja AI</h1>
     </section>
-    <section class="h-screen flex justify-center items-center font-bold">
+    <section class="h-screen flex flex-col justify-center items-center font-bold">
         <h1>Sekcja CTA</h1>
+        <button id="download-app-button" class="p-4 rounded-md bg-blue-500 text-white">Download Our App</button>
+        <MobileAppPopup triggerSelector="#download-app-button" />
     </section>
     <footer class="flex justify-evenly">
         <a>Polityka prywatności</a>

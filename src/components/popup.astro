@@ -1,0 +1,191 @@
+---
+interface Props {
+  appStoreLink?: string;
+  googlePlayLink?: string;
+  appTitle?: string;
+  triggerSelector?: string; // New prop for custom trigger elements
+  simulateDevice?: 'ios' | 'android' | null; // New prop for device simulation
+}
+
+const { 
+  appStoreLink = 'https://apps.apple.com/app/your-app-id', 
+  googlePlayLink = 'https://play.google.com/store/apps/details?id=your.package.name',
+  appTitle = 'Our App',
+  triggerSelector = '#open-popup', // Default to original button if not specified
+  simulateDevice = null
+} = Astro.props;
+---
+
+<!-- Previous styles remain the same -->
+<style is:global>
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-zoom-in {
+    animation: zoomIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+</style>
+
+<!-- Popup Modal (remains largely the same) -->
+<div 
+  id="mobile-app-popup" 
+  class="fixed inset-0 z-50 items-center justify-center p-4 hidden transition-all duration-300 ease-in-out bg-black/0 backdrop-blur-0"
+>
+  <!-- Previous popup content remains the same -->
+  <div 
+    id="popup-content"
+    class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 text-center relative transform scale-90 opacity-0 transition-all duration-300 ease-in-out"
+  >
+    <button 
+    id="close-popup" 
+    class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 transition-colors"
+    >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+    </button>
+
+    <h2 class="text-2xl font-bold mb-4">Download {appTitle}</h2>
+    <p class="text-gray-600 mb-6">Get the best experience on your mobile device!</p>
+
+    <div class="flex justify-center space-x-4">
+    <a 
+        href={appStoreLink} 
+        id="app-store-link"
+        class="bg-black text-white px-6 py-3 rounded-lg flex items-center space-x-2 hover:bg-gray-800 transition-colors"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.001 21.694c-5.141 0-9.336-4.194-9.336-9.335 0-5.141 4.195-9.335 9.336-9.335 5.14 0 9.335 4.194 9.335 9.335 0 5.141-4.195 9.335-9.335 9.335zm0-17.835c-4.676 0-8.5 3.824-8.5 8.5s3.824 8.5 8.5 8.5 8.5-3.824 8.5-8.5-3.824-8.5-8.5-8.5zm-4.011 7.86l.557-1.557h1.399l-.873 2.359v1.64h-1.321v-1.64l-.762-2.359h1.408zm4.308-1.557h-2.075v1.131h1.941v1.24h-1.941v1.189h2.075v1.301h-3.461v-4.861h3.461v1.3zm3.133 3.861h-1.297l-1.532-4.861h1.387l.941 3.224.94-3.224h1.364l-1.803 4.861zm4.236-1.24l-.744-2.621h-.024l-.732 2.621h1.5zM12.001 2.5a9.5 9.5 0 100 19 9.5 9.5 0 000-19z"/>
+        </svg>
+        <span>App Store</span>
+    </a>
+    
+    <a 
+        href={googlePlayLink} 
+        id="google-play-link"
+        class="bg-green-500 text-white px-6 py-3 rounded-lg flex items-center space-x-2 hover:bg-green-600 transition-colors"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 20.5v-17c0-.54.434-.981.98-.981.24 0 .48.08.68.24L12.51 12l-7.85 7.24c-.4.36-.98.32-1.34-.08-.2-.2-.31-.48-.31-.76zm16.48-6.79L16.6 12l3.12-2.88-4.54-2.51-3.24 3 3.24 3 4.8-2.7zm-9.01-3.44L3.02 3.52C3.22 3.32 3.52 3.22 3.8 3.22c.24 0 .48.08.68.24l4.12 3.81 2.44-2.38-3.77-2.08c-.4-.22-.88-.17-1.22.12zm12.08 10.79c-.2.4-.6.64-1 .64-.2 0-.4-.04-.6-.16L16.6 18l-3.12-2.88 3.24-3 4.8 2.7c.68.38.88 1.22.5 1.9l-3.44 6z"/>
+        </svg>
+        <span>Google Play</span>
+    </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script define:vars={{ triggerSelector, simulateDevice }}>
+  function detectMobileDevice() {
+    // If simulation is enabled, use that instead of real detection
+    if (simulateDevice) {
+      const appStoreLink = document.getElementById('app-store-link');
+      const googlePlayLink = document.getElementById('google-play-link');
+      
+      if (!googlePlayLink || !appStoreLink) return;
+      
+      if (simulateDevice === 'ios') {
+        googlePlayLink.style.display = 'none';
+        appStoreLink.style.display = 'flex';
+      } else if (simulateDevice === 'android') {
+        appStoreLink.style.display = 'none';
+        googlePlayLink.style.display = 'flex';
+      }
+      return;
+    }
+
+    // Original device detection logic
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const appStoreLink = document.getElementById('app-store-link');
+    const googlePlayLink = document.getElementById('google-play-link');
+    
+    if (!googlePlayLink || !appStoreLink) return;
+    if (isMobile) {
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      
+      if (isIOS) {
+        googlePlayLink.style.display = 'none';
+      } else {
+        appStoreLink.style.display = 'none';
+      }
+    }
+  }
+
+  function setupEventListeners() {
+    const popup = document.getElementById('mobile-app-popup');
+    const popupContent = document.getElementById('popup-content');
+    const closeButton = document.getElementById('close-popup');
+    
+    // Get all trigger elements
+    const triggerElements = document.querySelectorAll(triggerSelector);
+
+    if (!popup || !closeButton || !popupContent || triggerElements.length === 0) return;
+
+    function openPopup() {
+      popup.classList.remove('hidden');
+      void popup.offsetWidth;
+      popup.classList.add('flex');
+      popup.classList.remove('bg-black/0');
+      popup.classList.add('bg-black/50');
+      popup.classList.add('backdrop-blur-sm');
+      popupContent.classList.remove('scale-90');
+      popupContent.classList.remove('opacity-0');
+    }
+
+    function closePopup() {
+      popup.classList.add('bg-black/0');
+      popup.classList.remove('bg-black/50');
+      popup.classList.remove('backdrop-blur-sm');
+      popupContent.classList.add('scale-90');
+      popupContent.classList.add('opacity-0');
+      
+      setTimeout(() => {
+        popup.classList.remove('flex');
+        popup.classList.add('hidden');
+      }, 300);
+    }
+
+    // Add click event to all trigger elements
+    triggerElements.forEach(trigger => {
+      trigger.addEventListener('click', openPopup);
+    });
+
+    // Close button event
+    closeButton.addEventListener('click', closePopup);
+
+    // Outside click event
+    popup.addEventListener('click', (event) => {
+      if (event.target === popup) {
+        closePopup();
+      }
+    });
+  }
+
+  // Run setup on load
+  detectMobileDevice();
+  setupEventListeners();
+</script>
