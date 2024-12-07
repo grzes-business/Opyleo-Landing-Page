@@ -17,7 +17,7 @@ export default {
 			},
 			boxShadow: {
 				'book': '0px 0px 60px -15px rgba(0, 0, 0, 0.5)',
-			}
+			},
 		},
 	},
 	plugins: [],

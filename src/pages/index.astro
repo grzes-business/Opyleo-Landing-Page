@@ -57,10 +57,38 @@ import CardTemplate from '../components/cardTemplate.astro'
             </button>
         </div>
     </section>
-    <section class="h-screen flex justify-center items-center font-bold">
-        <h1>Sekcja Lokalnie Sprzedanych</h1>
+    <section
+        style="background: linear-gradient(-110deg, #FFFFFF 0%, #D76F9F 100%);"
+        class="h-screen flex justify-center items-center font-bold">
+        <div class="relative z-0">
+            <div>
+                <img src="../../public/woman.png" alt="Image" class="blur-3xl h-[100vh] w-[100vw] object-cover object-center">
+            </div>
+            <div class="z-10 absolute top-0 left-0">
+                <img src="../../public/woman.png" alt="Image" class="h-[100vh] w-[100vw] object-cover object-center">
+            </div>
+        </div>
+        <div>
+            <div style="border: red solid 2px"
+                 class="relative h-screen">
+                <div class="absolute bottom-0 right-0 h-[150vw] w-[150vw] bg-white/40 backdrop-blur-2xl translate-x-[40%] translate-y-[30%] rounded-full">
+                    <p class="text-right font-bold text-2xl translate-x-[-42%] translate-y-[150%]">
+                        Opyleo,<br>
+                        ekologiczniej się nie da!<br>
+                        <div class="text-right text-2xl font-extralight translate-x-[-42%] translate-y-[80%]">
+                            Lorem ipsum dolor sit amet,<br>
+                            consectetur adipiscing elit.<br>
+                            Aenean elementum<br>
+                            lacus a purus eleifend convallis.
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
-    <section class="h-screen flex justify-center items-center font-bold">
+    <section
+            style="background: linear-gradient(110deg, #D76F9F 0%, #FFFFFF 100%);"
+            class="h-screen flex justify-center items-center font-bold">
         <h1>Sekcja Wybór Książek</h1>
     </section>
     <section class="h-screen flex justify-center items-center font-bold">
