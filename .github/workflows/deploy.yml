@@ -29,7 +29,7 @@ jobs:
         run: pnpm build:ts
 
       - name: Set up environment variables
-        run: echo "PUBLIC_API_KEY=${{ secrets.PUBLIC_API_KEY }}" >> $GITHUB_ENV
+        run: echo "API_URL=${{ secrets.API_URL }}" >> $GITHUB_ENV
         
       - name: Build and upload site
         uses: withastro/action@v3
