@@ -4,14 +4,14 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import CardTemplate from './cardTemplate.astro';
 import { getBooks } from '../js/api.ts';
-
+import MobileAppPopup from '../components/popup.astro';
+import type Popup from './popup.astro';
 const books = await getBooks();
-const state = ["Zły", "Umiarowany", "Dobry", "Bardzo dobry"];
+const state = ["Zły", "Umiarkowany", "Dobry", "Bardzo dobry"];
 ---
 
-
-
-    <div class="w-screen flex items-center">
+    <div class="w-screen flex items-center" id="swiper-wrapper">
+      <MobileAppPopup triggerSelector="#swiper-wrapper" />
       <div class="swiper overflow-visible">
         <div class="swiper-wrapper">
           {books.map((book) => (
@@ -50,10 +50,13 @@ const state = ["Zły", "Umiarowany", "Dobry", "Bardzo dobry"];
         loop: true,
         centeredSlides: true,
         spaceBetween: 30,
-        allowTouchMove: false,
+        allowTouchMove: false, // Set it back to false
+        // effect: 'slide',
         autoplay: {
           delay: 3000,
-          disableOnInteraction: false
-        }
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+
       });
     </script>

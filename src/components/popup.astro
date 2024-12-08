@@ -68,11 +68,11 @@ const {
     <h2 class="text-black text-2xl font-bold mb-4">Pobierz Opyleo!</h2>
     <p class="text-base text-gray-600 mb-6">I ciesz się swoimi ulubionymi książkami!</p>
 
-    <div class="flex justify-center space-x-4">
+    <div class="flex justify-center flex-col gap-4">
     <a 
         href={appStoreLink} 
         id="app-store-link"
-        class="bg-black text-white px-6 py-3 rounded-lg flex items-center space-x-2 hover:bg-gray-800 transition-colors"
+        class="bg-black text-white px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
     >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
           <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m5.47437 20.299-.60228.9418c-.4231.726-1.36015.9747-2.09299.5556-.73272-.4192-.98393-1.3475-.56083-2.0735l.38218-.5577c.14634-.2083.50746-.568 1.22985-.5003 0 0 1.69995.1827 1.82298 1.058 0 0 .01668.288-.17891.5761zm16.99343-6.1278h-3.6144c-.2462-.0164-.3536-.1035-.396-.1542l-.0026-.0046-3.4548-5.60064c-.3803-.57618-.9842.89735-.9842.89735-.7211 1.64199.1024 3.50869.3893 4.07299l4.7228 7.8567c.423.7259 1.36.9748 2.093.5555.7327-.4192.9839-1.3475.5607-2.0735l-1.3437-2.3058c-.0261-.0559-.0714-.2075.2042-.2082h1.8257c.8462 0 1.5322-.6796 1.5322-1.5179s-.686-1.5177-1.5322-1.5177zm-8.7039 2.0635s.1929.9722-.5536.9722l-11.67813-.0001c-.846202 0-1.53217-.6796-1.53217-1.5179s.685968-1.5178 1.53217-1.5178h3.43514c.5546-.0318.68597-.349.68597-.349l.00317.0016 4.48395-7.69411-.0013-.00026c.0817-.14864.0136-.28914.0018-.31131l-1.48089-2.54104c-.4231-.72587-.17202-1.65431.56083-2.07333.73285-.419157 1.66986-.17055 2.09296.55546l.6868 1.17848.6856-1.17638c.4231-.72588 1.3601-.974749 2.093-.55546.7328.41915.9839 1.34732.5608 2.07333l-6.23967 10.70652c-.02728.0652-.03562.1675.16739.1855l2.04608.0001s2.1565.0693 2.4501 2.0635z" fill="#FFF"/></svg>
@@ -82,7 +82,7 @@ const {
     <a 
         href={googlePlayLink} 
         id="google-play-link"
-        class="bg-green-500 text-white px-6 py-3 rounded-lg flex items-center space-x-2 hover:bg-green-600 transition-colors"
+        class="bg-green-500 text-white px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-green-600 transition-colors"
     >
     <svg xmlns="http://www.w3.org/2000/svg" fill="#FFF" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50">
       <path d="M 7.125 2 L 28.78125 23.5 L 34.71875 17.5625 L 8.46875 2.40625 C 8.03125 2.152344 7.5625 2.011719 7.125 2 Z M 5.3125 3 C 5.117188 3.347656 5 3.757813 5 4.21875 L 5 46 C 5 46.335938 5.070313 46.636719 5.1875 46.90625 L 27.34375 24.90625 Z M 36.53125 18.59375 L 30.1875 24.90625 L 36.53125 31.1875 L 44.28125 26.75 C 45.382813 26.113281 45.539063 25.304688 45.53125 24.875 C 45.519531 24.164063 45.070313 23.5 44.3125 23.09375 C 43.652344 22.738281 38.75 19.882813 36.53125 18.59375 Z M 28.78125 26.3125 L 6.9375 47.96875 C 7.300781 47.949219 7.695313 47.871094 8.0625 47.65625 C 8.917969 47.160156 26.21875 37.15625 26.21875 37.15625 L 34.75 32.25 Z"></path>
@@ -144,6 +144,8 @@ const {
     if (!popup || !closeButton || !popupContent || triggerElements.length === 0) return;
 
     function openPopup() {
+      body = document.querySelector('body');
+      body.classList.add('overflow-y-hidden');
       popup.classList.remove('hidden');
       void popup.offsetWidth;
       popup.classList.add('flex');
@@ -155,6 +157,8 @@ const {
     }
 
     function closePopup() {
+      body = document.querySelector('body');
+      body.classList.remove('overflow-y-hidden');
       popup.classList.add('bg-black/0');
       popup.classList.remove('bg-black/50');
       popup.classList.remove('backdrop-blur-sm');

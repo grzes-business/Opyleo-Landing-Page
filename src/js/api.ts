@@ -11,6 +11,7 @@ interface Book {
 
 export async function getBooks(): Promise<Book[]> {
     let return_data: Book[] = [];
+    console.log("skibisi");
     try{
         const api_url = import.meta.env.API_URL;
         if(!api_url){
@@ -32,6 +33,6 @@ export async function getBooks(): Promise<Book[]> {
     } catch (error){
         console.error('Error:', error);
     }
-
+    
     return return_data;
 }
