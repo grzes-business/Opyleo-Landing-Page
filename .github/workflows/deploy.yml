@@ -18,6 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.13.2 # Replace with the version you need
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
