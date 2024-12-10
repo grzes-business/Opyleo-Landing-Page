@@ -11,7 +11,6 @@ interface Book {
 
 export async function getBooks(): Promise<Book[]> {
     let return_data: Book[] = [];
-    console.log("skibisi");
     try{
         const api_url = import.meta.env.API_URL;
         const max_page = import.meta.env.API_MAX_PAGE - 2;
