@@ -14,10 +14,15 @@ export async function getBooks(): Promise<Book[]> {
     console.log("skibisi");
     try{
         const api_url = import.meta.env.API_URL;
-        if(!api_url){
+        const max_page = import.meta.env.API_MAX_PAGE - 2;
+        const min_page = 1;
+        if(!api_url|| !max_page){
             throw new Error("Environment variable API_URL is missing");
         }
-        for (let i = 1; i <= 3; i++) {
+
+        
+        const start_page = getRandom(min_page, max_page);
+        for (let i = start_page; i <= start_page+2; i++) {
             let page = "";
             if(i > 1){
                 page = "?page=" + i.toString();
@@ -35,4 +40,8 @@ export async function getBooks(): Promise<Book[]> {
     }
     
     return return_data;
+}
+
+function getRandom(min: number, max: number){
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
