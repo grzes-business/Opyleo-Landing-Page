@@ -29,8 +29,11 @@ jobs:
         run: pnpm build:ts
 
       - name: Set up environment variables
-        run: echo "API_URL=${{ secrets.API_URL }}" >> $GITHUB_ENV
-        run: echo "API_MAX_PAGE=${{ secrets.API_MAX_PAGE }}" >> $GITHUB_ENV
+        - name: Set up environment variables
+          run: |
+            echo "API_URL=${{ secrets.API_URL }}" >> $GITHUB_ENV
+            echo "API_MAX_PAGE=${{ secrets.API_MAX_PAGE }}" >> $GITHUB_ENV
+
         
       - name: Build and upload site
         uses: withastro/action@v3
