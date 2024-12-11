@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.13.2
+        
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build TypeScript files
+        run: pnpm build:ts
+
+      - name: Set up environment variables
+        run: echo "API_URL=${{ secrets.API_URL }}" >> $GITHUB_ENV
+        
+      - name: Build and upload site
+        uses: withastro/action@v3
+        with:
+          package-manager: pnpm@9.13.2
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
