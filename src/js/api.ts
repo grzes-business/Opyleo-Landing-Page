@@ -41,6 +41,4 @@ export async function getBooks(): Promise<Book[]> {
     return return_data;
 }
 
-function getRandom(min: number, max: number){
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+function getRandom(min: number, max: number) { return Math.floor(Math.random() * (max - min + 1) + min); }
