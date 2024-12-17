@@ -138,17 +138,22 @@ import MobileAppPopup from '../components/popup.astro';
     <section
             style="background: linear-gradient(110deg, #D76F9F 0%, #FFFFFF 100%);"
             class="relative z-0 h-screen flex justify-center items-center font-bold">
-        <div class="m-4 section-three-header">
+        <div class="left-4 top-4 absolute m-4 section-three-header">
             <p class="autoShow text-3xl font-bold">Opyleo</p>
+            <p class="autoShow text-xl font-normal">Co u nas znajdziesz?</p>
         </div>
-        <div class="absolute w-[40vh] h-[40vh] translate-x-[30%] translate-y-[-30%] bg-white/30 backdrop-blur-sm rounded-full">
-
+        <img class="dots dotsAnim translate-y-[-80%]" src="dots.svg">
+        <div class="circleAnim1 flex items-center justify-center absolute w-[20vh] h-[20vh] translate-x-[30%] translate-y-[-20%] bg-white/10 backdrop-blur-sm rounded-full">
+            <div class="">Gatunek 1</div>
         </div>
-        <div class="absolute w-[40vh] h-[40vh] translate-x-[-20%] translate-y-[50%] bg-white/20 backdrop-blur-sm rounded-full">
-
+        <div class="circleAnim2 flex items-center justify-center absolute w-[20vh] h-[20vh] translate-x-[-60%] translate-y-[40%] bg-white/10 backdrop-blur-sm rounded-full">
+            <div class="">Gatunek 2</div>
         </div>
-        <div class="w-[40vh] h-[40vh] translate-x-[40%] translate-y-[80%] bg-white/10 backdrop-blur-sm rounded-full">
-
+        <div class="circleAnim3 flex items-center justify-center absolute w-[20vh] h-[20vh] translate-x-[60%] translate-y-[80%] bg-white/20 backdrop-blur-sm rounded-full">
+            <div class="">Gatunek 3</div>
+        </div>
+        <div class="circleAnim4 flex items-center justify-center absolute w-[20vh] h-[20vh] translate-x-[-80%] translate-y-[150%] bg-white/30 backdrop-blur-sm rounded-full">
+            <div class="">Gatunek 4</div>
         </div>
     </section>
     <section class="h-screen flex justify-center items-center font-bold">

@@ -104,3 +104,82 @@
      transform: translateY(0) scale(1);
    }
 }
+
+.dots {
+  filter: invert(67%) sepia(54%) saturate(1326%) hue-rotate(292deg) brightness(89%) contrast(87%);
+}
+
+.dotsAnim{
+  animation: dotsAnimation both;
+  animation-timeline: view(70% 5%);
+}
+
+@keyframes dotsAnimation{
+  from{
+    opacity: 0;
+    filter: invert(85%) sepia(86%) saturate(5820%) hue-rotate(197deg) brightness(136%) contrast(100%);
+  }to{
+     opacity: 1;
+     filter: invert(67%) sepia(54%) saturate(1326%) hue-rotate(292deg) brightness(89%) contrast(87%);
+   }
+}
+
+.circleAnim1{
+  animation: circleAnimation1 both;
+  animation-timeline: view(70% 5%);
+}
+
+@keyframes circleAnimation1{
+  from{
+    opacity: 0;
+    transform: scale(0.7);
+  }to{
+     opacity: 1;
+     transform: translateX(30%) translateY(-20%) scale(1);
+  }
+}
+
+.circleAnim2{
+  animation: circleAnimation2 both;
+  animation-timeline: view(70% 5%);
+}
+
+@keyframes circleAnimation2{
+  from{
+    opacity: 0;
+    transform: scale(0.7);
+  }to{
+     opacity: 1;
+     transform: translateX(-60%) translateY(40%) scale(1);
+   }
+}
+
+.circleAnim3{
+  animation: circleAnimation3 both;
+  animation-timeline: view(70% 5%);
+}
+
+@keyframes circleAnimation3{
+  from{
+    opacity: 0;
+    transform: scale(0.7);
+  }to{
+     opacity: 1;
+     transform: translateX(60%) translateY(80%) scale(1);
+   }
+}
+
+.circleAnim4{
+  animation: circleAnimation4 both;
+  animation-timeline: view(70% 5%);
+}
+
+@keyframes circleAnimation4{
+  from{
+    opacity: 0;
+    transform: scale(0.7);
+  }to{
+     opacity: 1;
+     transform: translateX(-80%) translateY(150%) scale(1);
+   }
+}
